@@ -5,7 +5,7 @@
   "main": "dist/libs/bull-mq-transport/index.js",
   "types": "dist/libs/bull-mq-transport/index.d.ts",
   "scripts": {
-    "postinstall": "pnpm run build",
+    "prepare": "rm -rf dist && tsc && nest build bull-mq-transport",
     "start": "nest start example",
     "start:dev": "nest start example --watch --preserveWatchOutput",
     "build": "nest build bull-mq-transport",

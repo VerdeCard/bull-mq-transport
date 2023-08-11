@@ -1,24 +1,18 @@
 import { Test } from '@nestjs/testing';
-import { QueueScheduler, Worker } from 'bullmq';
+import { Worker } from 'bullmq';
 import { of } from 'rxjs';
+import { IBullMqModuleOptions, WorkerFactory } from '../';
 import {
-  IBullMqModuleOptions,
-  QueueSchedulerFactory,
-  WorkerFactory,
-} from '../';
-import {
+  Mock,
   createMockFromClass,
   createMockProviders,
-  Mock,
 } from '../../test/nest-test-helpers';
 import { BULLMQ_MODULE_OPTIONS } from '../constants';
 import { BullMqServer } from './bull-mq.server';
 
 describe('BullMqServer', () => {
   let server: BullMqServer;
-  let schedulerFactory: Mock<QueueSchedulerFactory>;
   let workerFactory: Mock<WorkerFactory>;
-  let scheduler: Mock<QueueScheduler>;
   let worker: Mock<Worker>;
 
   const bullMQModuleOptions: IBullMqModuleOptions = {
@@ -34,21 +28,18 @@ describe('BullMqServer', () => {
           provide: BULLMQ_MODULE_OPTIONS,
           useValue: bullMQModuleOptions,
         },
-        ...createMockProviders(QueueSchedulerFactory, WorkerFactory),
+        ...createMockProviders(WorkerFactory),
         BullMqServer,
       ],
     }).compile();
 
     server = module.get(BullMqServer);
-    schedulerFactory = module.get(QueueSchedulerFactory);
     workerFactory = module.get(WorkerFactory);
   });
 
   beforeEach(async () => {
-    scheduler = createMockFromClass(QueueScheduler);
     worker = createMockFromClass(Worker);
 
-    schedulerFactory.create.mockReturnValue(scheduler);
     workerFactory.create.mockReturnValue(worker);
   });
 
@@ -58,9 +49,7 @@ describe('BullMqServer', () => {
 
   it('should be defined', () => {
     expect(server).toBeDefined();
-    expect(schedulerFactory).toBeDefined();
     expect(workerFactory).toBeDefined();
-    expect(scheduler).toBeDefined();
     expect(worker).toBeDefined();
   });
 
@@ -69,7 +58,6 @@ describe('BullMqServer', () => {
     const callback = jest.fn();
     server.addHandler('test', handlerSpy, true);
     server.listen(callback);
-    expect(schedulerFactory.create).toHaveBeenCalledTimes(1);
     expect(workerFactory.create).toHaveBeenCalledTimes(1);
     expect(callback).toHaveBeenCalledTimes(1);
   });
@@ -92,7 +80,6 @@ describe('BullMqServer', () => {
     server.addHandler('test', handlerSpy, true);
     server.listen(callback);
     await server.close();
-    expect(scheduler.close).toHaveBeenCalledTimes(1);
     expect(worker.close).toHaveBeenCalledTimes(1);
   });
 });
