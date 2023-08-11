@@ -2,7 +2,6 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { BullMqClient } from './client/bull-mq.client';
 import { BULLMQ_MODULE_OPTIONS } from './constants/bull-mq.constants';
 import { QueueEventsFactory } from './factories/queue-events.factory';
-import { QueueSchedulerFactory } from './factories/queue-scheduler.factory';
 import { QueueFactory } from './factories/queue.factory';
 import { WorkerFactory } from './factories/worker.factory';
 import { IBullMqModuleOptionsAsync } from './interfaces/bull-mq-module-options-async.interface';
@@ -18,7 +17,6 @@ export class BullMqCoreModule {
       global: true,
       providers: [
         { provide: BULLMQ_MODULE_OPTIONS, useValue: options },
-        QueueSchedulerFactory,
         QueueFactory,
         QueueEventsFactory,
         WorkerFactory,
@@ -37,7 +35,6 @@ export class BullMqCoreModule {
       providers: [
         ...(options.providers ?? []),
         ...this.createAsyncProviders(options),
-        QueueSchedulerFactory,
         QueueFactory,
         QueueEventsFactory,
         WorkerFactory,
