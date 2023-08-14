@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { BullMqServer } from '@xdave/bull-mq-transport';
+import { BullMqServer } from 'verdecard/bull-mq-transport';
 import { ExampleModule } from './example.module';
 
 export const exampleBoostrap = async () => {

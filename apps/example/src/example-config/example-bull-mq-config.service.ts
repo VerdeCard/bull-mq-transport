@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {
   IBullMqModuleOptions,
   IBullMqModuleOptionsFactory,
-} from '@xdave/bull-mq-transport';
+} from '@verdecard/bull-mq-transport';
 
 @Injectable()
 export class ExampleBullMqConfigService implements IBullMqModuleOptionsFactory {

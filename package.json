@@ -5,7 +5,6 @@
   "main": "dist/libs/bull-mq-transport/index.js",
   "types": "dist/libs/bull-mq-transport/index.d.ts",
   "scripts": {
-    "preinstall": "rimraf dist",
     "prepare": "nest build bull-mq-transport",
     "start": "nest start example",
     "start:dev": "nest start example --watch --preserveWatchOutput",

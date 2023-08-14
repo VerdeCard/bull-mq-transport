@@ -7,13 +7,13 @@ import {
   RpcException,
   Transport,
 } from '@nestjs/microservices';
-import { BullMqClient } from '@xdave/bull-mq-transport';
+import { BullMqClient } from '@verdecard/bull-mq-transport';
 import { Job } from 'bullmq';
 import { ExampleHelloWorldSent } from '../events/example-hello-world-sent.event';
 
 @Controller('example')
 export class ExampleController {
-  constructor(private readonly client: BullMqClient) {}
+  constructor(private readonly client: BullMqClient) { }
 
   @Get('hello')
   sendHello() {
