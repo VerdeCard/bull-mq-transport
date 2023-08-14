@@ -15,8 +15,12 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@xdave/bull-mq-transport": ["libs/bull-mq-transport/src"],
-      "@xdave/bull-mq-transport/*": ["libs/bull-mq-transport/src/*"]
+      "@verdecard/bull-mq-transport": [
+        "libs/bull-mq-transport/src"
+      ],
+      "@verdecard/bull-mq-transport/*": [
+        "libs/bull-mq-transport/src/*"
+      ]
     }
   }
 }
