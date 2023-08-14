@@ -6,7 +6,7 @@
   "types": "dist/libs/bull-mq-transport/index.d.ts",
   "scripts": {
     "preinstall": "rimraf dist",
-    "prepare": "pnpm run build",
+    "prepare": "nest build bull-mq-transport",
     "start": "nest start example",
     "start:dev": "nest start example --watch --preserveWatchOutput",
     "build": "nest build bull-mq-transport",
