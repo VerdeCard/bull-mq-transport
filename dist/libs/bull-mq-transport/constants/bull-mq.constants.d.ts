@@ -1,0 +1,1 @@
+export declare const BULLMQ_MODULE_OPTIONS = "BULLMQ_MODULE_OPTIONS";

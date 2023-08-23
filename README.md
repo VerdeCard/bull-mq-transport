@@ -216,3 +216,6 @@ This package is a work in progress. Features include:
 - [x] Ability to provide more Job options (all supported)
 - [ ] Ability to provide more Queue options
 - [ ] Ability to provide more Worker options
+
+
+#build -> "nest build bull-mq-transport",

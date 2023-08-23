@@ -1,0 +1,1 @@
+{"version":3,"file":"queue.factory.js","sourceRoot":"","sources":["../../../../libs/bull-mq-transport/src/factories/queue.factory.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAA4C;AAC5C,mCAA6C;AAGtC,IAAM,YAAY,0BAAlB,MAAM,YAAY;IACvB,MAAM,CAAC,IAAY,EAAE,OAAsB;QACzC,OAAO,IAAI,cAAK,CAAC,IAAI,EAAE,OAAO,CAAC,CAAC;IAClC,CAAC;CACF,CAAA;uBAJY,YAAY;IADxB,IAAA,mBAAU,GAAE;GACA,YAAY,CAIxB"}
